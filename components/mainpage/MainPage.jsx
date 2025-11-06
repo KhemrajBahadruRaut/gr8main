@@ -2,7 +2,7 @@ import React from "react";
 
 export default function MainPage() {
   return (
-    <div className="min-h-screen bg-[#101820] relative overflow-hidden">
+    <div className=" bg-[#101820] relative overflow-hidden pb-20" >
       {/* Grid background pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
 
@@ -10,7 +10,7 @@ export default function MainPage() {
       <div className="absolute top-20 left-20 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-700"></div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-20">
+      <div className="relative z-10 flex flex-col items-center justify-center px-4 py-20">
         {/* Hero Text */}
         <div className="text-center mb-12 max-w-5xl lg:mt-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">

@@ -1,10 +1,139 @@
 import React from 'react'
 
 const Footer = () => {
+   const footerData = {
+    company: {
+      title: "COMPANY",
+      links: [
+        { label: "Home", href: "#" },
+        { label: "About", href: "#" },
+        { label: "Portfolio", href: "#" },
+        { label: "Merchandise", href: "#" },
+        { label: "Careers", href: "#" },
+        { label: "Contact Us", href: "#" }
+      ]
+    },
+    services: {
+      title: "SERVICES",
+      links: [
+        { label: "Web development", href: "#" },
+        { label: "App Development", href: "#" },
+        { label: "Graphics Designing", href: "#" },
+        { label: "Email Marketing", href: "#" },
+        { label: "Search Engine Optimization (SEO)", href: "#" },
+        { label: "Social Media Marketing", href: "#" },
+        { label: "Printing and Publishing", href: "#" },
+        { label: "Pay-Per-Click", href: "#" },
+        { label: "Content writing", href: "#" }
+      ]
+    },
+    resources: {
+      title: "RESOURCES",
+      links: [
+        { label: "Blog", href: "#" },
+        { label: "Portfolio", href: "#" },
+        { label: "Merchendise", href: "#" },
+        { label: "Contact Us", href: "#" }
+      ]
+    },
+    additionals: {
+      title: "ADDITIONALS",
+      links: [
+        { label: "Terms & Conditions", href: "#" },
+        { label: "Privacy Policy", href: "#" }
+      ]
+    }
+  };
   return (
-    <div>
-      thi is footer content
-    </div>
+    <footer className="bg-[#101820] text-gray-300">
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        {/* Footer Links Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
+          {/* Company Column */}
+          <div>
+            <h3 className="text-white font-bold text-sm tracking-wider mb-6">
+              {footerData.company.title}
+            </h3>
+            <ul className="space-y-3">
+              {footerData.company.links.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.href}
+                    className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services Column */}
+          <div>
+            <h3 className="text-white font-bold text-sm tracking-wider mb-6">
+              {footerData.services.title}
+            </h3>
+            <ul className="space-y-3">
+              {footerData.services.links.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.href}
+                    className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources Column */}
+          <div>
+            <h3 className="text-white font-bold text-sm tracking-wider mb-6">
+              {footerData.resources.title}
+            </h3>
+            <ul className="space-y-3">
+              {footerData.resources.links.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.href}
+                    className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Additionals Column */}
+          <div>
+            <h3 className="text-white font-bold text-sm tracking-wider mb-6">
+              {footerData.additionals.title}
+            </h3>
+            <ul className="space-y-3">
+              {footerData.additionals.links.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.href}
+                    className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="border-t border-slate-700/50 pt-8">
+          <p className="text-center text-gray-500 text-sm">
+            © 2025 All Rights Reserved. G R Eight Private Limited
+          </p>
+        </div>
+      </div>
+    </footer>
   )
 }
 
