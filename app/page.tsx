@@ -18,9 +18,7 @@ const page = () => {
       <OurServices/>
       <TestimonialsSection/>
       <BlogsSection/>
-      <Newsletter/>
-      
-  
+      <Newsletter/>c
     </div>
   )
 }

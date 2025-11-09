@@ -5,7 +5,7 @@ export default function TrustedBySection() {
     { name: "Deliver Mart", logo: "/banner/DeliveyMartLogo.webp" },
     { name: "Himalayan Thakali", logo: "/banner/HImalayanThakaliogo.webp" },
     { name: "Joy Travel and Tours", logo: "/banner/JoyTravelandToursLogo.webp" },
-    { name: "Karmasila Enterprises", logo: "/banner/KarmasilaEnterprisesLogo.webp" },
+    // { name: "Karmasila Enterprises", logo: "/banner/KarmasilaEnterprisesLogo.webp" },
     { name: "Key Nova Group", logo: "/banner/KeyNovaGroupLogo.webp" },
     // { name: "NPP Burger", logo: "/banner/nppburgerLogo.webp" },
     { name: "Parijat Clinic", logo: "/banner/ParijatClinicLogo.webp" },
@@ -15,7 +15,7 @@ export default function TrustedBySection() {
     { name: "Reliable Care Pt", logo: "/banner/ReliableCarePtLogo.webp" },
     { name: "SEWA Home Care", logo: "/banner/SEWAHomeCareLOGO.webp" },
     { name: "Shree Ganapati Bappa Saw Mill", logo: "/banner/ShreeGanapatiBappaSawMillLogo.webp" },
-    { name: "Siddhi Skin Aesthetic", logo: "/banner/SiddhiSkinAestheticLogo.webp" },
+    // { name: "Siddhi Skin Aesthetic", logo: "/banner/SiddhiSkinAestheticLogo.webp" },
     { name: "Suvekshya International Hospital", logo: "/banner/SuvekshyaInternationalHospitalLogo.webp" },
     { name: "Ticket Kaksha Travel and Tour", logo: "/banner/TicketKakshaTravelandTourLogo.webp" },
     { name: "Sewa The Foundation", logo: "/banner/SewaTheFoundationLogo.webp" },
@@ -27,11 +27,11 @@ export default function TrustedBySection() {
   return (
     <div className="bg-[#0f1821] text-white py-20 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <p className="text-emerald-400 text-sm font-semibold tracking-widest uppercase mb-3">
             OUR VALUED CLIENTS
           </p>
-          <h1 className="text-5xl md:text-6xl font-bold">Trusted By</h1>
+          <h1 className="text-3xl md:text-5xl font-bold">Trusted By</h1>
         </div>
 
         <div className="relative">

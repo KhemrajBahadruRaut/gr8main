@@ -59,7 +59,7 @@ export default function BlogsSection() {
             {blogs.map((blog) => (
               <div
                 key={blog.id}
-                className="bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl overflow-hidden hover:border-slate-600/50 transition-all duration-300 group cursor-pointer  shadow-lg shadow-white/15"
+                className="bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl overflow-hidden hover:border-slate-600/50 transition-all duration-300 group cursor-pointer shadow-[0px_-2px_13px] shadow-white/15"
               >
                 {/* Blog Image */}
                 <div className="relative h-48 overflow-hidden p-6 ">
@@ -118,7 +118,7 @@ export default function BlogsSection() {
 
         {/* See All Blogs Button */}
         <div className="flex justify-center mt-12">
-          <button className="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-8 py-4 rounded-full flex items-center gap-2 transition-all duration-300 group shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40">
+          <button className="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-8 py-3 rounded-full flex items-center gap-2 transition-all duration-300 group shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40">
             See all blogs
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>

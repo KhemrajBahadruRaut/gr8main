@@ -1,6 +1,9 @@
 import React from "react";
 
+
+
 export default function MainPage() {
+  
   return (
     <div className=" bg-[#101820] relative overflow-hidden pb-20" >
       {/* Grid background pattern */}
@@ -13,7 +16,7 @@ export default function MainPage() {
       <div className="relative z-10 flex flex-col items-center justify-center px-4 py-20">
         {/* Hero Text */}
         <div className="text-center mb-12 max-w-5xl lg:mt-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Building a <span className=" bg-linear-to-r from-[#D79442] to-[#EFC27E] bg-clip-text text-transparent text-3xl md:text-4xl lg:text-7xl ">Stronger</span>
             <br />
             Digital Presence for Your Business.
@@ -32,7 +35,6 @@ export default function MainPage() {
               <span className="absolute inset-0 rounded-full p-px bg-linear-to-r from-[#F2D08A] to-[#B64546] transition-all duration-300 ease-out">
                 <span className="block h-full w-full rounded-full bg-black transition-all duration-300 ease-out group-hover:bg-linear-to-r group-hover:from-[#F2D08A]/10 group-hover:to-[#B64546]/10"></span>
               </span>
-
               {/* Text */}
               <span className="relative z-10 flex items-center gap-2 bg-linear-to-r from-[#F2D08A] to-[#B64546] bg-clip-text text-transparent transition-all duration-300 ease-out group-hover:text-white">
                 Get started →
@@ -44,7 +46,7 @@ export default function MainPage() {
         {/* Code Window */}
         <div className="relative w-full max-w-2xl">
           {/* Floating Icons */}
-          <div className="absolute z-10 -left-15 -top-8 w-18 h-18 bg-linear-to-r from-[#D79442] to-[#EFC27E] rounded-2xl flex items-center justify-center shadow-xl -rotate-12 hover:rotate-0 transition-transform duration-300">
+          <div className="absolute hidden z-10 -left-12 -top-8 w-18 h-18 bg-linear-to-r from-[#D79442] to-[#EFC27E] rounded-2xl sm:flex items-center justify-center shadow-xl -rotate-12 hover:rotate-0 transition-transform duration-300">
             <svg
               className="w-8 h-8 text-white"
               fill="none"
@@ -60,7 +62,7 @@ export default function MainPage() {
             </svg>
           </div>
 
-          <div className="absolute z-10 -right-12 -top-8 w-18 h-18 bg-linear-to-r from-[#B32723] to-[#E06666] rounded-2xl flex items-center justify-center shadow-xl rotate-12 hover:rotate-0 transition-transform duration-300">
+          <div className="absolute hidden z-10 -right-12 -top-8 w-18 h-18 bg-linear-to-r from-[#B32723] to-[#E06666] rounded-2xl sm:flex items-center justify-center shadow-xl rotate-12 hover:rotate-0 transition-transform duration-300">
             <svg
               className="w-8 h-8 text-white"
               fill="none"
@@ -76,7 +78,7 @@ export default function MainPage() {
             </svg>
           </div>
 
-          <div className="absolute z-10 -right-12 -bottom-8 w-18 h-18 bg-linear-to-r from-[#0E8A4D] to-[#4FBF87] rounded-2xl flex items-center justify-center  -rotate-12 hover:rotate-0 transition-transform duration-300">
+          <div className="absolute hidden z-10 -right-12 -bottom-8 w-18 h-18 bg-linear-to-r from-[#0E8A4D] to-[#4FBF87] rounded-2xl sm:flex items-center justify-center  -rotate-12 hover:rotate-0 transition-transform duration-300">
             <svg
               className="w-8 h-8 text-white"
               fill="none"
@@ -93,9 +95,10 @@ export default function MainPage() {
           </div>
           
           {/* Code Window */}
-          <div className="bg-slate-800/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-700/50 overflow-hidden hover:shadow-orange-500/10 transition-all duration-500">
+          {/* <div className="bg-slate-800/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-700/50 overflow-hidden hover:shadow-orange-500/10 transition-all duration-500"> */}
             {/* Window Header */}
-            <div className="bg-slate-900/90 px-6 py-4 flex items-center gap-3 border-b border-slate-700/50">
+            <div className=" backdrop-blur-[3px] p-3 sm:px-10 sm:py-8 flex-row items-center gap-3 border-3 border-slate-700/50 rounded-4xl shadow-2xl hover:shadow-orange-500/10 transition-all duration-500">
+            <div className="flex items-center relative -top-5">
               <div className="flex gap-2">
                 <div className="w-3 h-3 rounded-full bg-red-500"></div>
                 <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
@@ -103,9 +106,8 @@ export default function MainPage() {
               </div>
               <span className="text-slate-400 text-sm ml-4">Dashboard.jsx</span>
             </div>
-
             {/* Code Content */}
-            <div className="p-8 font-mono text-sm">
+            <div className="p-6 font-mono text-sm  rounded-xl  bg-[#26323D]">
               <div className="space-y-1">
                 <div>
                   <span className="text-purple-400">const</span>{" "}
@@ -135,7 +137,9 @@ export default function MainPage() {
                 </div>
               </div>
             </div>
-          </div>
+            </div>
+
+          {/* </div> */}
         </div>
       </div>
 
@@ -146,7 +150,9 @@ export default function MainPage() {
               transparent 2px
             ),
             linear-gradient(90deg, rgba(71, 85, 105, 1) 1px, transparent 1px);
+            
           background-size: 90px 90px;
+          
         }
 
         @keyframes pulse {
@@ -167,6 +173,7 @@ export default function MainPage() {
 
         .delay-700 {
           animation-delay: 700ms;
+
         }
           
       `}</style>

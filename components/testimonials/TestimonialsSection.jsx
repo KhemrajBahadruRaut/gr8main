@@ -98,7 +98,7 @@ export default function TestimonialsSection() {
           {visibleTestimonials.map((testimonial, index) => (
             <div
               key={testimonial.id}
-              className="bg-linear-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-slate-600/50 transition-all duration-300 group"
+              className="bg-linear-to-br from-[#101820] to-[#26323D] backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-slate-600/50 transition-all duration-300 group"
             >
               {/* Quote Icon and Date */}
               <div className="flex justify-between items-start mb-6">
