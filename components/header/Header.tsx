@@ -1,4 +1,5 @@
-import Navbar from './navbar/Navbar'
+import { use } from "react";
+import Navbar from "./navbar/Navbar";
 
 export default function Header() {
   return (

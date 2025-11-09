@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, Link } from 'lucide-react';
 
 export default function BlogsSection() {
   const blogs = [
@@ -118,10 +118,12 @@ export default function BlogsSection() {
 
         {/* See All Blogs Button */}
         <div className="flex justify-center mt-12">
+         <a href="/blogs">
           <button className="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-8 py-3 rounded-full flex items-center gap-2 transition-all duration-300 group shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40">
             See all blogs
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
+         </a>
         </div>
       </div>
     </div>

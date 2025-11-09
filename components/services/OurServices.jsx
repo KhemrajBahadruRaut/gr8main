@@ -12,6 +12,9 @@ import {
 import { TbSocial } from "react-icons/tb";
 import { TfiEmail } from "react-icons/tfi";
 import { BsCursor } from "react-icons/bs";
+import Link from "next/link";
+
+
 
 export default function ServicesSection() {
   const services = [
@@ -19,17 +22,24 @@ export default function ServicesSection() {
       icon: <Smartphone className="w-5 h-5" />,
       title: "App Development",
       description: "Lorem ipsum dolor new sit amet, consec...",
+      Link: "/services/mobile-app-development"
     },
 
     {
       icon: <Code className="w-5 h-5" />,
       title: "Website Development",
       description: "Lorem ipsum dolor new sit amet, consec...",
+            Link: "/services/web-development"
+
+  
     },
+
     {
       icon: <TrendingUp className="w-5 h-5" />,
       title: "Search Engine Optimization (SEO)",
       description: "Lorem ipsum dolor new sit amet, consec...",
+            Link: "/services/seo-services"
+
     },
   ];
 
@@ -38,6 +48,7 @@ export default function ServicesSection() {
       icon: <Palette className="w-5 h-5" />,
       title: "Graphics Designing",
       description: "Lorem ipsum dolor new sit amet, consec...",
+
     },
     {
       icon: <PenBoxIcon className="w-5 h-5" />,
@@ -126,6 +137,8 @@ export default function ServicesSection() {
 
               <div className="space-y-4">
                 {services.map((service, index) => (
+                    <Link key={index} href={service.Link}>
+
                   <div
                     key={index}
                     className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-4 flex items-center justify-between group hover:bg-slate-700/50 hover:border-cyan-400/50 transition-all duration-300 cursor-pointer overflow-hidden"
@@ -169,6 +182,8 @@ export default function ServicesSection() {
                       </div>
                     </div>
                   </div>
+                    </Link>
+
                 ))}
               </div>
             </div>
