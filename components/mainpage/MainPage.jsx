@@ -1,36 +1,38 @@
-import React from "react";
-
-
+import React, { useState, useEffect } from "react";
 
 export default function MainPage() {
-  
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
-    <div className=" bg-[#101820] relative overflow-hidden pb-20" >
+    <div className="bg-[#101820] relative overflow-hidden pb-20">
       {/* Grid background pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
 
-      {/* Animated gradient orbs */}
-      <div className="absolute top-20 left-20 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-700"></div>
+      {/* Lighter gradient orbs */}
+      <div className="absolute top-20 left-10 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl animate-float"></div>
+      <div className="absolute bottom-20 right-10 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl animate-float-delayed"></div>
 
       <div className="relative z-10 flex flex-col items-center justify-center px-4 py-20">
         {/* Hero Text */}
-        <div className="text-center mb-12 max-w-5xl lg:mt-10">
+        <div className={`text-center mb-12 max-w-5xl lg:mt-10 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Building a <span className=" bg-linear-to-r from-[#D79442] to-[#EFC27E] bg-clip-text text-transparent text-3xl md:text-4xl lg:text-7xl ">Stronger</span>
+            Building a <span className="bg-linear-to-r from-[#D79442] to-[#EFC27E] bg-clip-text text-transparent text-3xl md:text-4xl lg:text-7xl animate-gradient">Stronger</span>
             <br />
             Digital Presence for Your Business.
           </h1>
-          <p className="text-slate-400 text-lg md:text-xl mb-10">
-            Lorem ipsum dolor new sit amet, consec tetur adip iscing elit, new
-            is see.
+          <p className="text-slate-400 text-lg md:text-xl mb-10 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+            Lorem ipsum dolor new sit amet, consec tetur adip iscing elit, new is see.
           </p>
 
           <div className="flex flex-wrap gap-8 justify-center">
-            <button className="bg-linear-to-r from-[#B64546] to-[#F2D08A] hover:from-[#F2D08A] hover:to-[#B64546] hover:scale-105 hover:shadow-sm transition-all duration-300 ease-in-out text-white px-8 py-3 rounded-full font-medium  shadow-lg hover:shadow-orange-600/50 ">
+            <button className="bg-linear-to-r from-[#B64546] to-[#F2D08A] hover:from-[#F2D08A] hover:to-[#B64546] hover:scale-105 hover:shadow-sm transition-all duration-300 ease-in-out text-white px-8 py-3 rounded-full font-medium shadow-lg hover:shadow-orange-600/50 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
               See our Works
             </button>
-            <button className="relative inline-flex items-center justify-center px-10 py-1 font-medium rounded-full bg-transparent group transition-all duration-300 ease-out hover:scale-105">
+            <button className="relative inline-flex items-center justify-center px-10 py-3 font-medium rounded-full bg-transparent group transition-all duration-300 ease-out hover:scale-105 animate-fade-in-up" style={{ animationDelay: '500ms' }}>
               {/* Gradient border */}
               <span className="absolute inset-0 rounded-full p-px bg-linear-to-r from-[#F2D08A] to-[#B64546] transition-all duration-300 ease-out">
                 <span className="block h-full w-full rounded-full bg-black transition-all duration-300 ease-out group-hover:bg-linear-to-r group-hover:from-[#F2D08A]/10 group-hover:to-[#B64546]/10"></span>
@@ -44,11 +46,11 @@ export default function MainPage() {
         </div>
 
         {/* Code Window */}
-        <div className="relative w-full max-w-2xl">
-          {/* Floating Icons */}
-          <div className="absolute hidden z-10 -left-12 -top-8 w-18 h-18 bg-linear-to-r from-[#D79442] to-[#EFC27E] rounded-2xl sm:flex items-center justify-center shadow-xl -rotate-12 hover:rotate-0 transition-transform duration-300">
+        <div className={`relative w-full max-w-2xl transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          {/* Lighter Floating Icons */}
+          <div className="absolute hidden z-10 -left-8 -top-6 w-14 h-14 bg-linear-to-r from-[#D79442]/80 to-[#EFC27E]/80 rounded-xl sm:flex items-center justify-center shadow-lg -rotate-12 hover:rotate-0 transition-transform duration-300 backdrop-blur-sm">
             <svg
-              className="w-8 h-8 text-white"
+              className="w-6 h-6 text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -62,9 +64,9 @@ export default function MainPage() {
             </svg>
           </div>
 
-          <div className="absolute hidden z-10 -right-12 -top-8 w-18 h-18 bg-linear-to-r from-[#B32723] to-[#E06666] rounded-2xl sm:flex items-center justify-center shadow-xl rotate-12 hover:rotate-0 transition-transform duration-300">
+          <div className="absolute hidden z-10 -right-8 -top-6 w-14 h-14 bg-linear-to-r from-[#B32723]/80 to-[#E06666]/80 rounded-xl sm:flex items-center justify-center shadow-lg rotate-12 hover:rotate-0 transition-transform duration-300 backdrop-blur-sm">
             <svg
-              className="w-8 h-8 text-white"
+              className="w-6 h-6 text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -78,9 +80,9 @@ export default function MainPage() {
             </svg>
           </div>
 
-          <div className="absolute hidden z-10 -right-12 -bottom-8 w-18 h-18 bg-linear-to-r from-[#0E8A4D] to-[#4FBF87] rounded-2xl sm:flex items-center justify-center  -rotate-12 hover:rotate-0 transition-transform duration-300">
+          <div className="absolute hidden z-10 -right-8 -bottom-6 w-14 h-14 bg-linear-to-r from-[#0E8A4D]/80 to-[#4FBF87]/80 rounded-xl sm:flex items-center justify-center -rotate-12 hover:rotate-0 transition-transform duration-300 backdrop-blur-sm">
             <svg
-              className="w-8 h-8 text-white"
+              className="w-6 h-6 text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -95,20 +97,19 @@ export default function MainPage() {
           </div>
           
           {/* Code Window */}
-          {/* <div className="bg-slate-800/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-700/50 overflow-hidden hover:shadow-orange-500/10 transition-all duration-500"> */}
-            {/* Window Header */}
-            <div className=" backdrop-blur-[3px] p-3 sm:px-10 sm:py-8 flex-row items-center gap-3 border-3 border-slate-700/50 rounded-4xl shadow-2xl hover:shadow-orange-500/10 transition-all duration-500">
-            <div className="flex items-center relative -top-5">
+          <div className="backdrop-blur-[3px] p-6 sm:px-8 sm:py-6 flex-row items-center gap-3 border border-slate-700/50 rounded-3xl shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:scale-[1.02] group bg-slate-900/50">
+            <div className="flex items-center mb-4">
               <div className="flex gap-2">
                 <div className="w-3 h-3 rounded-full bg-red-500"></div>
                 <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                 <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
               </div>
-              <span className="text-slate-400 text-sm ml-4">Dashboard.jsx</span>
+              <span className="text-slate-400 text-sm ml-4 group-hover:text-slate-300 transition-colors duration-300">Dashboard.jsx</span>
             </div>
-            {/* Code Content */}
-            <div className="p-6 font-mono text-sm  rounded-xl  bg-[#26323D]">
-              <div className="space-y-1">
+            
+            {/* Code Content - Fixed to show all text */}
+            <div className="p-6 font-mono text-sm rounded-xl bg-[#26323D] group-hover:bg-[#2a3845] transition-all duration-500">
+              <div className="space-y-2">
                 <div>
                   <span className="text-purple-400">const</span>{" "}
                   <span className="text-yellow-300">digitalSolution</span>{" "}
@@ -135,11 +136,15 @@ export default function MainPage() {
                 <div>
                   <span className="text-slate-300">{"}"}</span>
                 </div>
+                <div className="pt-2">
+                  <span className="text-purple-400">export</span>{" "}
+                  <span className="text-purple-400">default</span>{" "}
+                  <span className="text-yellow-300">digitalSolution</span>
+                  <span className="text-slate-300">;</span>
+                </div>
               </div>
             </div>
-            </div>
-
-          {/* </div> */}
+          </div>
         </div>
       </div>
 
@@ -150,32 +155,66 @@ export default function MainPage() {
               transparent 2px
             ),
             linear-gradient(90deg, rgba(71, 85, 105, 1) 1px, transparent 1px);
-            
           background-size: 90px 90px;
-          
         }
 
-        @keyframes pulse {
-          0%,
-          100% {
-            opacity: 0.1;
-            transform: scale(1);
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px) scale(1);
+            opacity: 0.05;
           }
           50% {
-            opacity: 0.2;
-            transform: scale(1.1);
+            transform: translateY(-15px) scale(1.03);
+            opacity: 0.08;
           }
         }
 
-        .animate-pulse {
-          animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
-        .delay-700 {
-          animation-delay: 700ms;
-
+        @keyframes gradient {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
         }
-          
+
+        .animate-float {
+          animation: float 8s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+          animation: float 8s ease-in-out infinite;
+          animation-delay: 3s;
+        }
+
+        .animate-fade-in-up {
+          animation: fadeInUp 0.8s ease-out forwards;
+          opacity: 0;
+        }
+
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 4s ease infinite;
+        }
+
+        /* Ensure proper text display */
+        .font-mono {
+          font-family: ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
       `}</style>
     </div>
   );

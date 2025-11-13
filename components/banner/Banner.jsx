@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function TrustedBySection() {
   const clients = [
     { name: "Deliver Mart", logo: "/banner/DeliveyMartLogo.webp" },
@@ -25,7 +23,7 @@ export default function TrustedBySection() {
   const duplicatedClients = [...clients, ...clients, ...clients];
 
   return (
-    <div className="bg-[#0f1821] text-white py-20 px-6 overflow-hidden">
+    <div className="bg-[#0f1821] text-white sm:pt-15 pt-5 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
           <p className="text-emerald-400 text-sm font-semibold tracking-widest uppercase mb-3">
@@ -43,8 +41,8 @@ export default function TrustedBySection() {
               {duplicatedClients.map((client, index) => (
                 <div
                   key={index}
-                  className="shrink-0 mx-8 flex items-center justify-center"
-                  style={{ width: '150px' }}
+                  className="shrink-0 sm:mx-8 mx-4 flex items-center justify-center sm:w-35 w-25"
+                  // style={{ width: '140px' }}
                 >
                   <img
                     src={client.logo}

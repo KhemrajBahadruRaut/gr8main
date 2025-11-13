@@ -1,9 +1,26 @@
 "use client"
-import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { ChevronDown, Code } from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
 
 const WebDevelopment = () => {
   const [openFaq, setOpenFaq] = useState(null);
+  
+  // Create refs for each section
+  const heroRef = useRef(null);
+  const overviewRef = useRef(null);
+  const processRef = useRef(null);
+  const techRef = useRef(null);
+  const faqRef = useRef(null);
+  const ctaRef = useRef(null);
+  
+  // Use useInView for each section
+  const heroInView = useInView(heroRef, { once: true, threshold: 0.3 });
+  const overviewInView = useInView(overviewRef, { once: true, threshold: 0.2 });
+  const processInView = useInView(processRef, { once: true, threshold: 0.2 });
+  const techInView = useInView(techRef, { once: true, threshold: 0.2 });
+  const faqInView = useInView(faqRef, { once: true, threshold: 0.2 });
+  const ctaInView = useInView(ctaRef, { once: true, threshold: 0.3 });
 
   const technologies = [
     { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
@@ -65,90 +82,250 @@ const WebDevelopment = () => {
     }
   ];
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        duration: 0.8
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    },
+    hover: {
+      y: -5,
+      scale: 1.02,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  const techLogoVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.4,
+        ease: "backOut"
+      }
+    },
+    hover: {
+      scale: 1.1,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  const faqItemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const buttonVariants = {
+    hover: {
+      scale: 1.05,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut"
+      }
+    },
+    tap: {
+      scale: 0.95
+    }
+  };
+
   return (
     <div className="pt-10 bg-[#0a1520] text-white">
       {/* Hero Section */}
-      <div className="relative py-20 px-4 sm:px-6 lg:px-8">
+      <motion.div 
+        ref={heroRef}
+        className="relative py-20 px-4 sm:px-6 lg:px-8"
+        initial="hidden"
+        animate={heroInView ? "visible" : "hidden"}
+        variants={containerVariants}
+      >
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block px-4 py-1 rounded-full bg-[#FFF6EB] text-sm mb-6">
-            <span className="text-[#D79442] "> Web Development</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <motion.div 
+            className="inline-block px-4 py-1 rounded-full bg-[#FFF6EB] text-sm mb-6"
+            variants={itemVariants}
+          >
+            <span className="text-[#D79442] flex gap-2"><Code/> Web Development</span>
+          </motion.div>
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold mb-6"
+            variants={itemVariants}
+          >
             Transform Your Digital Vision Into Reality
-          </h1>
-          <p className="text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          </motion.h1>
+          <motion.p 
+            className="text-gray-400 max-w-3xl mx-auto leading-relaxed"
+            variants={itemVariants}
+          >
             We create stunning, high-performance websites and applications that drive business growth, engage your audience and deliver exceptional user experiences.
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Overview Section */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-12">
+      <motion.div 
+        ref={overviewRef}
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+        initial="hidden"
+        animate={overviewInView ? "visible" : "hidden"}
+        variants={containerVariants}
+      >
+        <motion.div 
+          className="text-center mb-12"
+          variants={itemVariants}
+        >
           <p className="text-[#D79442] text-sm font-medium mb-2 tracking-wider">
             EXPLORE FOR THE WEEK
           </p>
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Overview</h2>
-        </div>
+        </motion.div>
 
-        <div className="space-y-8 mb-12">
-          <p className="text-gray-400 leading-relaxed text-center max-w-4xl mx-auto">
+        <motion.div 
+          className="space-y-8 mb-12"
+          variants={containerVariants}
+        >
+          <motion.p 
+            className="text-gray-400 leading-relaxed text-center max-w-4xl mx-auto"
+            variants={itemVariants}
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat adipiscing elit.
-          </p>
-          <p className="text-gray-400 leading-relaxed text-center max-w-4xl mx-auto">
+          </motion.p>
+          <motion.p 
+            className="text-gray-400 leading-relaxed text-center max-w-4xl mx-auto"
+            variants={itemVariants}
+          >
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Overview Points */}
-        <div className="flex flex-col gap-6 max-w-xl mx-auto">
+        <motion.div 
+          className="flex flex-col gap-6 max-w-xl mx-auto"
+          variants={containerVariants}
+        >
           {overviewPoints.map((point, index) => (
-            <div key={index} className="flex gap-4 items-start">
+            <motion.div 
+              key={index} 
+              className="flex gap-4 items-start"
+              variants={itemVariants}
+            >
               <div className="bg-linear-to-br from-[#D79442] to-[#EFC27E] text-black font-bold px-4 py-2 rounded-lg shrink-0">
                 {point.number}
               </div>
               <p className="text-gray-300 pt-1">{point.text}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Process Section */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-12">
+      <motion.div 
+        ref={processRef}
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+        initial="hidden"
+        animate={processInView ? "visible" : "hidden"}
+        variants={containerVariants}
+      >
+        <motion.div 
+          className="text-center mb-12"
+          variants={itemVariants}
+        >
           <p className="text-[#D79442] text-sm font-medium mb-2 tracking-wider">
             PLANNING & FRAMEWORK
           </p>
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Our Process</h2>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div 
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          variants={containerVariants}
+        >
           {processSteps.map((step, index) => (
-            <div key={index} className="space-y-4">
+            <motion.div 
+              key={index} 
+              className="space-y-4"
+              variants={cardVariants}
+              whileHover="hover"
+            >
               <div className="text-5xl font-bold text-gray-700">{step.number}</div>
               <h3 className="text-xl font-bold">{step.title}</h3>
               <p className="text-gray-400 text-sm leading-relaxed">
                 {step.description}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Technologies Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-12">
+      <motion.div 
+        ref={techRef}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+        initial="hidden"
+        animate={techInView ? "visible" : "hidden"}
+        variants={containerVariants}
+      >
+        <motion.div 
+          className="text-center mb-12"
+          variants={itemVariants}
+        >
           <p className="text-[#D79442] text-sm font-medium mb-2 tracking-wider">
             OUR TECH STACK
           </p>
           <h2 className="text-3xl md:text-4xl font-bold mb-12">Technologies We Use</h2>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-14 lg:gap-16 xl:gap-20">
+        <motion.div 
+          className="flex flex-wrap justify-center items-center gap-8 md:gap-14 lg:gap-16 xl:gap-20"
+          variants={containerVariants}
+        >
           {technologies.map((tech, index) => (
-            <div
+            <motion.div
               key={index}
-              className="w-16 h-16 flex items-center justify-center  transition-all duration-300 hover:scale-110"
+              className="w-16 h-16 flex items-center justify-center transition-all duration-300"
+              variants={techLogoVariants}
+              whileHover="hover"
               title={tech.name}
             >
               <img
@@ -156,29 +333,44 @@ const WebDevelopment = () => {
                 alt={tech.name}
                 className="w-full h-full object-contain"
               />
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* FAQs Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="mb-12">
+      <motion.div 
+        ref={faqRef}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+        initial="hidden"
+        animate={faqInView ? "visible" : "hidden"}
+        variants={containerVariants}
+      >
+        <motion.div 
+          className="mb-12"
+          variants={itemVariants}
+        >
           <p className="text-[#D79442] text-sm font-medium mb-2 tracking-wider">
             FREQUENTLY ASKED QUESTIONS
           </p>
           <h2 className="text-3xl md:text-4xl font-bold">FAQs</h2>
-        </div>
+        </motion.div>
 
-        <div className="space-y-4">
+        <motion.div 
+          className="space-y-4"
+          variants={containerVariants}
+        >
           {faqs.map((faq, index) => (
-            <div
+            <motion.div
               key={index}
               className="bg-[#0f1d2e] rounded-lg overflow-hidden border border-gray-800"
+              variants={faqItemVariants}
             >
-              <button
+              <motion.button
                 onClick={() => setOpenFaq(openFaq === index ? null : index)}
                 className="w-full flex items-center justify-between p-5 text-left hover:bg-[#132435] transition-colors"
+                whileHover={{ backgroundColor: 'rgba(19, 36, 53, 0.5)' }}
+                whileTap={{ scale: 0.98 }}
               >
                 <span className="text-gray-300">{faq}</span>
                 <ChevronDown
@@ -186,37 +378,74 @@ const WebDevelopment = () => {
                     openFaq === index ? 'rotate-180' : ''
                   }`}
                 />
-              </button>
+              </motion.button>
               {openFaq === index && (
-                <div className="px-5 pb-5 text-gray-400">
+                <motion.div 
+                  className="px-5 pb-5 text-gray-400"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua.
                   </p>
-                </div>
+                </motion.div>
               )}
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* CTA Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="bg-linear-to-br from-[#0f1d2e] to-[#132435] rounded-2xl p-12 text-center border border-gray-800">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Start your project</h2>
-          <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+      <motion.div 
+        ref={ctaRef}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+        initial="hidden"
+        animate={ctaInView ? "visible" : "hidden"}
+        variants={containerVariants}
+      >
+        <motion.div 
+          className="bg-linear-to-br from-[#0f1d2e] to-[#132435] rounded-2xl p-12 text-center border border-gray-800"
+          variants={cardVariants}
+          whileHover="hover"
+        >
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold mb-4"
+            variants={itemVariants}
+          >
+            Start your project
+          </motion.h2>
+          <motion.p 
+            className="text-gray-400 mb-8 max-w-2xl mx-auto"
+            variants={itemVariants}
+          >
             Ut enim ad minim veniam, quis nos trud exercitation ullamco laboris ut aliquip ex ea commodo consequat.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-3 bg-white text-black font-medium rounded-3xl hover:bg-gray-100 transition-colors">
+          </motion.p>
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            variants={containerVariants}
+          >
+            <motion.button 
+              className="px-8 py-3 bg-white text-black font-medium rounded-3xl hover:bg-gray-100 transition-colors"
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+            >
               Book a consultation
-            </button>
-            <button className="px-8 py-3 bg-transparent border border-white text-white font-medium rounded-3xl hover:bg-white hover:text-black transition-colors">
+            </motion.button>
+            <motion.button 
+              className="px-8 py-3 bg-transparent border border-white text-white font-medium rounded-3xl hover:bg-white hover:text-black transition-colors"
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+            >
               See our works
-            </button>
-          </div>
-        </div>
-      </div>
+            </motion.button>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

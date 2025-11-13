@@ -82,7 +82,7 @@ const Navbar = () => {
       hasSubmenu: true,
       link: "/resources",
       submenuItems: [
-        { name: "Blog", link: "/resources/blog" },
+        { name: "Blog", link: "/blogs" },
         { name: "News Letters", link: "/resources/newsletters" },
         { name: "Help Center", link: "/resources/help-center" },
         {
@@ -136,7 +136,7 @@ const Navbar = () => {
             <a href="/">
               <img
                 src="/mainlogo/GR8-Nepal-Private-Limited-Logo.webp"
-                className="cursor-pointer h-8 md:h-14 lg:h-18 max-w-full object-contain"
+                className="cursor-pointer h-8 md:h-14 lg:h-20 max-w-full object-contain"
                 alt="gr8-Nepal-Private-Limited-Logo"
                 title="gr8-Nepal-Private-Limited"
               />

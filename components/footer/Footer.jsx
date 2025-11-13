@@ -5,8 +5,8 @@ const Footer = () => {
     company: {
       title: "COMPANY",
       links: [
-        { label: "Home", href: "#" },
-        { label: "About", href: "#" },
+        { label: "Home", href: "/" },
+        { label: "About", href: "/about" },
         { label: "Portfolio", href: "#" },
         { label: "Merchandise", href: "#" },
         { label: "Careers", href: "#" },
@@ -16,9 +16,9 @@ const Footer = () => {
     services: {
       title: "SERVICES",
       links: [
-        { label: "Web development", href: "#" },
-        { label: "App Development", href: "#" },
-        { label: "Graphics Designing", href: "#" },
+        { label: "Web development", href: "/services/web-development" },
+        { label: "App Development", href: "/services/mobile-app-development" },
+        { label: "Graphics Designing", href: "/services/graphics-designing" },
         { label: "Email Marketing", href: "#" },
         { label: "Search Engine Optimization (SEO)", href: "#" },
         { label: "Social Media Marketing", href: "#" },
@@ -30,8 +30,8 @@ const Footer = () => {
     resources: {
       title: "RESOURCES",
       links: [
-        { label: "Blog", href: "#" },
-        { label: "Portfolio", href: "#" },
+        { label: "Blog", href: "/blogs" },
+        { label: "Portfolio", href: "/portfolio" },
         { label: "Merchendise", href: "#" },
         { label: "Contact Us", href: "#" }
       ]
