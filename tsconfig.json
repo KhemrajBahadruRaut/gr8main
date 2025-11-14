@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "components/footer/Footer.jsx", "components/header/navbar/sidebar/sidebar.jsx", "components/header/navbar/Navbar.jsx", "components/mainpage/MainPage.jsx", "components/testimonials/TestimonialsSection.jsx"  ],
+, "components/footer/Footer.jsx", "components/header/navbar/sidebar/sidebar.jsx", "components/header/navbar/Navbar.jsx", "components/mainpage/MainPage.jsx", "components/testimonials/TestimonialsSection.jsx", "app/public/layout.Tsx", "app/layout.js"  ],
   "exclude": ["node_modules"]
 }
