@@ -25,8 +25,9 @@ export default function AboutSection() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setIsVisible(true);
-  }, []);
+  Promise.resolve().then(() => setIsVisible(true));
+}, []);
+
 
   const values = [
     {
