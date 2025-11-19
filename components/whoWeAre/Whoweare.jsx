@@ -78,17 +78,17 @@ const Whoweare = () => {
   const values = [
     {
       title: "Our Mission",
-      description: "Innovating solutions, managing properties, and delivering excellence with integrity and a customer-first focus. Innovating solutions, managing properties, and delivering excellence with integrity and a customer-first focus. Integrity and a customer-first focus.",
+      description: "To provide innovative digital solutions that drive measurable business growth, enhance online presence, and create meaningful connections with audiences — all with integrity and a customer-first approach.",
       gradient: "linear-gradient(135deg, #D79442 0%, #EFC27E 100%)"
     },
     {
       title: "Our Vision",
-      description: "To become a leading provider at the intersection of technology and property services, transforming the way individuals manage, experience, and interact with both physical and digital spaces. Integrity and a customer-first focus. Integrity and a customer-first focus.",
+      description: "TTo be a leading digital solutions provider, transforming how businesses engage, connect, and succeed online through technology, creativity, and strategic innovation.",
       gradient: "linear-gradient(135deg, #B32723 0%, #E06666 100%)"
     },
     {
       title: "Our Values",
-      description: "To become a leading provider at the intersection of technology and property services, transforming the way individuals manage, experience, and interact with both physical and digital spaces. Integrity and a customer-first focus. Integrity and a customer-first focus.",
+      description: "We embrace innovation by adopting cutting-edge technologies and creative solutions to deliver exceptional results. With integrity at the core of everything we do, we maintain transparency, honesty, and professionalism in all our actions. Our approach is deeply customer-centric, prioritizing our clients’ success and building strategies aligned with their goals. Committed to excellence, we ensure quality in every project to create impactful digital experiences.",
       gradient: "linear-gradient(135deg, #0E8A4D 0%, #4FBF87 100%)"
     }
   ];

@@ -259,7 +259,7 @@ const BlogPage = () => {
   const latestBlogs = useMemo(() => 
     filteredBlogs
       .filter(blog => blog.id !== featuredMainBlog?.id)
-      .slice(0, 2),
+      .slice(0, 10000),
     [filteredBlogs, featuredMainBlog]
   );
 

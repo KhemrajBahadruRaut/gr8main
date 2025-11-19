@@ -30,7 +30,7 @@ export default function Merchandise() {
     <div className="pt-25 bg-[#101820] py-16 px-4">
       <div className="max-w-7xl mx-auto relative">
         <div className=" absolute w-40 h-40 rounded-xl bg-linear-to-br from-[#101820] to-[#26323D]"></div>
-        <div className="right-50  absolute w-40 h-40 rounded-xl bg-linear-to-br from-[#101820] to-[#26323D]"></div>
+        <div className="right-20  absolute w-40 h-40 rounded-xl bg-linear-to-br from-[#101820] to-[#26323D]"></div>
         {/* Header */}
         <div className="text-center mb-4 ">
           <p className="text-[#d4af37] text-xs tracking-widest uppercase mb-2">
@@ -40,8 +40,7 @@ export default function Merchandise() {
             Merchendise
           </h1>
           <p className="text-gray-400 text-sm max-w-2xl mx-auto leading-relaxed z-10">
-            Lorem ipsum dolor sit amet. Consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.
+            Discover a collection of thoughtfully designed merchandise created to reflect your unique style and personality. Each product blends quality, comfort, and creativity, making it perfect for everyday use or special moments. Whether you're looking for something bold, minimal, or meaningful, our merchandise is crafted to inspire confidence and individuality. Elevate your look and express yourself with items that go beyond the basics—made to last, made to stand out, and made just for you.
           </p>
         </div>
 

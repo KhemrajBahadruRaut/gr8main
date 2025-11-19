@@ -83,12 +83,12 @@ const Navbar = () => {
       link: "/resources",
       submenuItems: [
         { name: "Blog", link: "/blogs" },
-        { name: "News Letters", link: "/resources/newsletters" },
+        // { name: "News Letters", link: "/resources/newsletters" },
         { name: "Help Center", link: "/resources/help-center" },
-        {
-          name: "Social Media Courses",
-          link: "/resources/social-media-courses",
-        },
+        // {
+        //   name: "Social Media Courses",
+        //   link: "/resources/social-media-courses",
+        // },
       ],
     },
     { name: "Merchendise", hasSubmenu: false, link: "/merchendise" },

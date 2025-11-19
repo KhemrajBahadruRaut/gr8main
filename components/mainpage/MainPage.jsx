@@ -25,12 +25,14 @@ export default function MainPage() {
             Digital Presence for Your Business.
           </h1>
           <p className="text-slate-400 text-lg md:text-xl mb-10 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-            Lorem ipsum dolor new sit amet, consec tetur adip iscing elit, new is see.
+Driving growth through creativity and innovation.
           </p>
 
           <div className="flex flex-wrap gap-8 justify-center">
             <button className="bg-linear-to-r from-[#B64546] to-[#F2D08A] hover:from-[#F2D08A] hover:to-[#B64546] hover:scale-105 hover:shadow-sm transition-all duration-300 ease-in-out text-white px-8 py-3 rounded-full font-medium shadow-lg hover:shadow-orange-600/50 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
-              See our Works
+            <a href="#">
+            See our Works
+              </a>  
             </button>
             <button className="relative inline-flex items-center justify-center px-10 py-3 font-medium rounded-full bg-transparent group transition-all duration-300 ease-out hover:scale-105 animate-fade-in-up" style={{ animationDelay: '500ms' }}>
               {/* Gradient border */}
@@ -39,7 +41,10 @@ export default function MainPage() {
               </span>
               {/* Text */}
               <span className="relative z-10 flex items-center gap-2 bg-linear-to-r from-[#F2D08A] to-[#B64546] bg-clip-text text-transparent transition-all duration-300 ease-out group-hover:text-white">
+               <a href="/contact">
+
                 Get started →
+               </a>
               </span>
             </button>
           </div>
