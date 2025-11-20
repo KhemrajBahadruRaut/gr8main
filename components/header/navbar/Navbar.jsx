@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import {
   FaFacebookF,
@@ -133,14 +134,14 @@ const Navbar = () => {
       >
         <div className="flex justify-between md:px-20 pb-1 backdrop-blur-sm">
           <div className="pl-2 pt-2" style={{ cursor: "pointer" }}>
-            <a href="/">
+            <Link href="/">
               <img
                 src="/mainlogo/GR8-Nepal-Private-Limited-Logo.webp"
                 className="cursor-pointer h-8 md:h-14 lg:h-20 max-w-full object-contain"
                 alt="gr8-Nepal-Private-Limited-Logo"
                 title="gr8-Nepal-Private-Limited"
               />
-            </a>
+            </Link>
           </div>
 
           <div className="flex justify-end items-center gap-4">
@@ -148,7 +149,7 @@ const Navbar = () => {
             <div className="hidden md:flex items-center gap-4">
               <div className="flex gap-2">
                 {socialLinks.map((item, index) => (
-                  <a
+                  <Link
                     key={index}
                     href={item.link}
                     target="_blank"
@@ -171,7 +172,7 @@ const Navbar = () => {
                         </div>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 ))}
               </div>
 
@@ -277,26 +278,26 @@ const Navbar = () => {
                         <ul className="bg-slate-900 py-1">
                           {item.submenuItems?.map((subItem, subIndex) => (
                             <li key={subIndex}>
-                              <a
+                              <Link
                                 href={subItem.link}
                                 className="block px-12 py-1 text-gray-300 hover:text-white hover:bg-slate-700 transition-colors"
                                 onClick={() => setMenuOpen(false)}
                               >
                                 {subItem.name}
-                              </a>
+                              </Link>
                             </li>
                           ))}
                         </ul>
                       </div>
                     </div>
                   ) : (
-                    <a
+                    <Link
                       href={item.link}
                       className="flex items-center justify-between px-6 py-1 text-white hover:bg-slate-700 transition-colors group"
                       onClick={() => setMenuOpen(false)}
                     >
                       <span className="text-md">{item.name}</span>
-                    </a>
+                    </Link>
                   )}
                 </li>
               ))}
@@ -307,7 +308,7 @@ const Navbar = () => {
           <div className="p-6 border-t border-slate-700">
             <div className="flex gap-4 justify-center">
               {socialLinks.map((item, index) => (
-                <a
+                <Link
                   key={index}
                   href={item.link}
                   target="_blank"
@@ -317,7 +318,7 @@ const Navbar = () => {
                   <div className="text-lg">
                     {item.icon}
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

@@ -1,8 +1,9 @@
 "use client";
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
-import { motion, useInView } from 'framer-motion';
+import { motion  } from 'framer-motion';
 
+// const API_URL = "https://gr8.com.np/gr8_backend/blogs";
 const API_URL = "http://localhost/gr8_backend/blogs";
 const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80";
 
@@ -31,7 +32,6 @@ export default function BlogsSection() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   
-  const sectionInView = true;
   const headerInView = true;
   const blogsInView = true;
   const buttonInView = true;

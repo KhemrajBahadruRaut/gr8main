@@ -1,11 +1,12 @@
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
 export default function MainPage() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-  Promise.resolve().then(() => setIsVisible(true));
-}, []);
+    Promise.resolve().then(() => setIsVisible(true));
+  }, []);
 
   return (
     <div className="bg-[#101820] relative overflow-hidden pb-20">
@@ -18,40 +19,55 @@ export default function MainPage() {
 
       <div className="relative z-10 flex flex-col items-center justify-center px-4 py-20">
         {/* Hero Text */}
-        <div className={`text-center mb-12 max-w-5xl lg:mt-10 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div
+          className={`text-center mb-12 max-w-5xl lg:mt-10 transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
           <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Building a <span className="bg-linear-to-r from-[#D79442] to-[#EFC27E] bg-clip-text text-transparent text-3xl md:text-4xl lg:text-7xl animate-gradient">Stronger</span>
+            Building a{" "}
+            <span className="bg-linear-to-r from-[#D79442] to-[#EFC27E] bg-clip-text text-transparent text-3xl md:text-4xl lg:text-7xl animate-gradient">
+              Stronger
+            </span>
             <br />
             Digital Presence for Your Business.
           </h1>
-          <p className="text-slate-400 text-lg md:text-xl mb-10 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-Driving growth through creativity and innovation.
+          <p
+            className="text-slate-400 text-lg md:text-xl mb-10 animate-fade-in-up"
+            style={{ animationDelay: "200ms" }}
+          >
+            Driving growth through creativity and innovation.
           </p>
 
           <div className="flex flex-wrap gap-8 justify-center">
-            <button className="bg-linear-to-r from-[#B64546] to-[#F2D08A] hover:from-[#F2D08A] hover:to-[#B64546] hover:scale-105 hover:shadow-sm transition-all duration-300 ease-in-out text-white px-8 py-3 rounded-full font-medium shadow-lg hover:shadow-orange-600/50 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
-            <a href="#">
-            See our Works
-              </a>  
+            <button
+              className="bg-linear-to-r from-[#B64546] to-[#F2D08A] hover:from-[#F2D08A] hover:to-[#B64546] hover:scale-105 hover:shadow-sm transition-all duration-300 ease-in-out text-white px-8 py-3 rounded-full font-medium shadow-lg hover:shadow-orange-600/50 animate-fade-in-up"
+              style={{ animationDelay: "400ms" }}
+            >
+              <Link href="#">See our Works</Link>
             </button>
-            <button className="relative inline-flex items-center justify-center px-10 py-3 font-medium rounded-full bg-transparent group transition-all duration-300 ease-out hover:scale-105 animate-fade-in-up" style={{ animationDelay: '500ms' }}>
+            <button
+              className="relative inline-flex items-center justify-center px-10 py-3 font-medium rounded-full bg-transparent group transition-all duration-300 ease-out hover:scale-105 animate-fade-in-up"
+              style={{ animationDelay: "500ms" }}
+            >
               {/* Gradient border */}
               <span className="absolute inset-0 rounded-full p-px bg-linear-to-r from-[#F2D08A] to-[#B64546] transition-all duration-300 ease-out">
                 <span className="block h-full w-full rounded-full bg-black transition-all duration-300 ease-out group-hover:bg-linear-to-r group-hover:from-[#F2D08A]/10 group-hover:to-[#B64546]/10"></span>
               </span>
               {/* Text */}
               <span className="relative z-10 flex items-center gap-2 bg-linear-to-r from-[#F2D08A] to-[#B64546] bg-clip-text text-transparent transition-all duration-300 ease-out group-hover:text-white">
-               <a href="/contact">
-
-                Get started →
-               </a>
+                <Link href="/contact">Get started →</Link>
               </span>
             </button>
           </div>
         </div>
 
         {/* Code Window */}
-        <div className={`relative w-full max-w-2xl transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div
+          className={`relative w-full max-w-2xl transition-all duration-1000 delay-500 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
           {/* Lighter Floating Icons */}
           <div className="absolute hidden z-10 -left-8 -top-6 w-14 h-14 bg-linear-to-r from-[#D79442]/80 to-[#EFC27E]/80 rounded-xl sm:flex items-center justify-center shadow-lg -rotate-12 hover:rotate-0 transition-transform duration-300 backdrop-blur-sm">
             <svg
@@ -100,7 +116,7 @@ Driving growth through creativity and innovation.
               />
             </svg>
           </div>
-          
+
           {/* Code Window */}
           <div className="backdrop-blur-[3px] p-6 sm:px-8 sm:py-6 flex-row items-center gap-3 border border-slate-700/50 rounded-3xl shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:scale-[1.02] group bg-slate-900/50">
             <div className="flex items-center mb-4">
@@ -109,9 +125,11 @@ Driving growth through creativity and innovation.
                 <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                 <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
               </div>
-              <span className="text-slate-400 text-sm ml-4 group-hover:text-slate-300 transition-colors duration-300">Dashboard.jsx</span>
+              <span className="text-slate-400 text-sm ml-4 group-hover:text-slate-300 transition-colors duration-300">
+                Dashboard.jsx
+              </span>
             </div>
-            
+
             {/* Code Content - Fixed to show all text */}
             <div className="p-6 font-mono text-sm rounded-xl bg-[#26323D] group-hover:bg-[#2a3845] transition-all duration-500">
               <div className="space-y-2">
@@ -130,13 +148,17 @@ Driving growth through creativity and innovation.
                 <div className="pl-6">
                   <span className="text-cyan-400">design</span>
                   <span className="text-slate-300">: </span>
-                  <span className="text-emerald-400">&quot;exceptional&quot;</span>
+                  <span className="text-emerald-400">
+                    &quot;exceptional&quot;
+                  </span>
                   <span className="text-slate-300">,</span>
                 </div>
                 <div className="pl-6">
                   <span className="text-cyan-400">results</span>
                   <span className="text-slate-300">: </span>
-                  <span className="text-emerald-400">&quot;guaranteed&quot;</span>
+                  <span className="text-emerald-400">
+                    &quot;guaranteed&quot;
+                  </span>
                 </div>
                 <div>
                   <span className="text-slate-300">{"}"}</span>
@@ -164,7 +186,8 @@ Driving growth through creativity and innovation.
         }
 
         @keyframes float {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0px) scale(1);
             opacity: 0.05;
           }
@@ -218,9 +241,9 @@ Driving growth through creativity and innovation.
 
         /* Ensure proper text display */
         .font-mono {
-          font-family: ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+          font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas,
+            "Liberation Mono", Menlo, monospace;
         }
-          
       `}</style>
     </div>
   );

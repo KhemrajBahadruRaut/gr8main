@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { 
   Briefcase, MapPin, Clock, DollarSign, Users, 
-  TrendingUp, Award, Coffee, Heart, Zap, 
+  TrendingUp, Award, Coffee, Zap, 
   ChevronRight, X, Upload, Send, Check
 } from 'lucide-react';
 

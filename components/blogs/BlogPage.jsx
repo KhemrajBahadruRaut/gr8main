@@ -3,6 +3,7 @@ import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { Clock, Calendar, Sparkles, Search } from "lucide-react";
 
 // Constants
+// const API_URL = "https://gr8.com.np/gr8_backend/blogs";
 const API_URL = "http://localhost/gr8_backend/blogs";
 const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80";
 
