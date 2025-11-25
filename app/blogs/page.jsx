@@ -15,7 +15,10 @@ export default function BlogsPage() {
       title: "Why Every Business Needs a Strong Digital Presence in 2025",
       description: "Discover how digital transformation is reshaping business landscapes and why establishing a robust online presence is crucial for success in the coming years.",
       date: "21st May, 2025",
-      readTime: "5 min read"
+      readTime: "5 min read",
+      slug: "digital-presence-2025"
+
+
     },
     {
       id: 2,
@@ -26,7 +29,8 @@ export default function BlogsPage() {
       title: "Discover why a strong online presence is essential for business growth",
       description: "Learn the key strategies and benefits of building a comprehensive digital footprint that drives customer engagement and business expansion.",
       date: "25th Sept, 2025",
-      readTime: "8 min read"
+      readTime: "8 min read",
+      slug: "online-presence-growth" 
     },
     {
       id: 3,
@@ -38,7 +42,9 @@ export default function BlogsPage() {
       title: "The Future of Digital Marketing: Trends to Watch in 2025",
       description: "Explore the emerging technologies and strategies that will define digital marketing success in the near future.",
       date: "15th Oct, 2025",
-      readTime: "6 min read"
+      readTime: "6 min read",
+      slug: "future-digital-marketing" 
+
     }
   ];
 
@@ -88,7 +94,7 @@ export default function BlogsPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {allBlogs.map((blog) => (
               <div key={blog.id} className="group">
-                <Link href={`/blogs/${blog.id}`}>
+                <Link href={`/blogs/${blog.slug}`}>
                   <div className="bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl overflow-hidden hover:border-slate-600/50 transition-all duration-300 cursor-pointer h-full flex flex-col">
                     {/* Image */}
                     <div className="relative h-48 overflow-hidden">

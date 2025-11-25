@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function DigitalPresence2025() {
   return (
-    <div className="bg-[#0f1821] text-white min-h-screen">
+    <div className="bg-[#0f1821] text-white pt-18">
       {/* Navigation */}
       <nav className="border-b border-slate-700/50">
         <div className="max-w-6xl mx-auto px-6 py-4">
