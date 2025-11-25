@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useMemo, useCallback } from "react";
 import {
   Smartphone,
   Code,
@@ -24,13 +24,14 @@ export default function ServicesSection() {
   const ctaRef = useRef(null);
 
   // Use useInView for each section
-  const headerInView = useInView(headerRef, { once: true, threshold: 0.3 });
-  const digitalInView = useInView(digitalRef, { once: true, threshold: 0.2 });
-  const designInView = useInView(designRef, { once: true, threshold: 0.2 });
-  const marketingInView = useInView(marketingRef, { once: true, threshold: 0.2 });
-  const ctaInView = useInView(ctaRef, { once: true, threshold: 0.3 });
+  const headerInView = useInView(headerRef, { once: true, threshold: 0.1 });
+  const digitalInView = useInView(digitalRef, { once: true, threshold: 0.1 });
+  const designInView = useInView(designRef, { once: true, threshold: 0.1 });
+  const marketingInView = useInView(marketingRef, { once: true, threshold: 0.1 });
+  const ctaInView = useInView(ctaRef, { once: true, threshold: 0.1 });
 
-  const services = [
+  // Memoized services data
+  const services = useMemo(() => [
     {
       icon: <Smartphone className="w-5 h-5" />,
       title: "App Development",
@@ -49,9 +50,9 @@ export default function ServicesSection() {
       description: "Boost your online visibility and drive organic traffic with our comprehensive SEO strategies.",
       Link: "/services/seo-services"
     },
-  ];
+  ], []);
 
-  const designservices = [
+  const designservices = useMemo(() => [
     {
       icon: <Palette className="w-5 h-5" />,
       title: "Graphics Designing",
@@ -70,9 +71,9 @@ export default function ServicesSection() {
       description: "High-quality print materials that make your brand stand out in physical spaces.",
       Link: "/services/printing-publishing"
     },
-  ];
+  ], []);
 
-  const digitalmarketingfeaturesservices = [
+  const digitalmarketingfeaturesservices = useMemo(() => [
     {
       icon: <TbSocial className="w-5 h-5" />,
       title: "Social Media Marketing",
@@ -91,34 +92,37 @@ export default function ServicesSection() {
       description: "Data-driven PPC campaigns that maximize ROI and accelerate business growth.",
       Link: "/services/ppc-advertising"
     },
-  ];
+  ], []);
 
-  const features = [
+  // Memoized features data
+  const features = useMemo(() => [
     "Responsive design that works on all devices",
     "Optimized performance and fast loading times",
     "Secure and scalable architecture",
     "Ongoing maintenance and support"
-  ];
+  ], []);
 
-  const designFeatures = [
+  const designFeatures = useMemo(() => [
     "Strategic brand identity development",
     "Consistent visual language across platforms",
     "User-centered design approach",
     "Professional print and digital assets"
-  ];
+  ], []);
 
-  const digitalMarketingFeatures = [
+  const digitalMarketingFeatures = useMemo(() => [
     "Comprehensive digital marketing strategy",
     "Data analytics and performance tracking",
     "Targeted audience segmentation",
     "Continuous optimization for maximum ROI"
-  ];
+  ], []);
 
+  // Mouse position state
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [hoveredSection, setHoveredSection] = useState(null);
 
-  const handleMouseMove = (e, index, section) => {
+  // Optimized mouse handlers
+  const handleMouseMove = useCallback((e, index, section) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setMousePosition({
       x: e.clientX - rect.left,
@@ -126,72 +130,238 @@ export default function ServicesSection() {
     });
     setHoveredIndex(index);
     setHoveredSection(section);
-  };
+  }, []);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     setHoveredIndex(null);
     setHoveredSection(null);
-  };
+  }, []);
 
-  // Animation variants
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
+  // Memoized animation variants
+  const fadeInUp = useMemo(() => ({
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        duration: 0.8
-      }
-    }
-  };
-
-  const cardAnimation = {
-    hidden: { opacity: 0, scale: 0.9, y: 20 },
-    visible: {
-      opacity: 1,
-      scale: 1,
       y: 0,
       transition: {
         duration: 0.5,
         ease: "easeOut"
       }
     }
-  };
+  }), []);
 
-  const featureListAnimation = {
+  const staggerContainer = useMemo(() => ({
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.2
+        duration: 0.6
       }
     }
-  };
+  }), []);
 
-  const featureItemAnimation = {
-    hidden: { opacity: 0, x: -20 },
+  const cardAnimation = useMemo(() => ({
+    hidden: { opacity: 0, scale: 0.95, y: 15 },
     visible: {
       opacity: 1,
-      x: 0,
+      scale: 1,
+      y: 0,
       transition: {
         duration: 0.4,
         ease: "easeOut"
       }
     }
-  };
+  }), []);
+
+  const featureListAnimation = useMemo(() => ({
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  }), []);
+
+  const featureItemAnimation = useMemo(() => ({
+    hidden: { opacity: 0, x: -15 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    }
+  }), []);
+
+  // Reusable Service Card Component
+  const ServiceCard = useCallback(({ service, index, section }) => (
+    <motion.div variants={cardAnimation}>
+      <Link href={service.Link}>
+        <div
+          className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-4 flex items-center justify-between group hover:bg-slate-700/50 hover:border-cyan-400/50 transition-all duration-300 cursor-pointer overflow-hidden"
+          onMouseMove={(e) => handleMouseMove(e, index, section)}
+          onMouseLeave={handleMouseLeave}
+        >
+          {/* Mouse-following Glow Effect */}
+          {hoveredIndex === index && hoveredSection === section && (
+            <div
+              className="absolute w-64 h-64 -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-opacity duration-300"
+              style={{
+                left: `${mousePosition.x}px`,
+                top: `${mousePosition.y}px`,
+                background: "radial-gradient(circle, rgba(34, 211, 238, 0.3) 0%, rgba(34, 211, 238, 0.15) 30%, transparent 70%)",
+                filter: "blur(40px)",
+              }}
+            />
+          )}
+
+          {/* Static Glow Effect Layers */}
+          <div className="absolute inset-0 bg-linear-to-r from-cyan-400/0 via-cyan-400/5 to-cyan-400/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+          {/* Content */}
+          <div className="relative flex items-center gap-4 flex-1">
+            <div className="text-cyan-400 bg-slate-700/50 p-2 rounded-lg group-hover:bg-cyan-400/10 transition-colors duration-300">
+              {service.icon}
+            </div>
+            <div className="flex-1">
+              <h4 className="font-semibold text-white mb-1">
+                {service.title}
+              </h4>
+              <p className="text-sm text-gray-400">
+                {service.description}
+              </p>
+            </div>
+          </div>
+          <div className="relative ml-4">
+            <div className="bg-slate-700/50 p-2 rounded-full group-hover:bg-cyan-400/20 transition-all duration-300">
+              <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
+            </div>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  ), [hoveredIndex, hoveredSection, mousePosition, handleMouseMove, handleMouseLeave]);
+
+  // Reusable Feature List Component
+  const FeatureList = useCallback(({ features }) => (
+    <motion.div 
+      className="space-y-5"
+      variants={featureListAnimation}
+    >
+      {features.map((feature, index) => (
+        <motion.div 
+          key={index} 
+          className="flex items-start gap-4 group"
+          variants={featureItemAnimation}
+        >
+          <div className="mt-1 shrink-0">
+            <ArrowRightCircle className="w-6 h-6 text-cyan-400 group-hover:text-emerald-400 transition-colors duration-300" />
+          </div>
+          <p className="text-gray-300 text-lg leading-relaxed">
+            {feature}
+          </p>
+        </motion.div>
+      ))}
+    </motion.div>
+  ), []);
+
+  // Reusable Services Container Component
+  const ServicesContainer = useCallback(({ 
+    title, 
+    services, 
+    features, 
+    section, 
+    ref, 
+    inView, 
+    reverse = false 
+  }) => (
+    <motion.div 
+      ref={ref}
+      className="grid lg:grid-cols-2 gap-12 items-start"
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={staggerContainer}
+    >
+      {reverse ? (
+        <>
+          {/* Left Side - Main Feature */}
+          <motion.div 
+            className="space-y-8 lg:pt-12"
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeInUp}>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 leading-tight">
+                {title}
+              </h2>
+              <p className="text-gray-400 text-lg leading-relaxed text-justify">
+                {section === "design" 
+                  ? "We craft visual identities that resonate with your target audience and create lasting impressions across all touchpoints."
+                  : "We implement data-driven marketing strategies that deliver measurable results and sustainable business growth."
+                }
+              </p>
+            </motion.div>
+            <FeatureList features={features} />
+          </motion.div>
+
+          {/* Right Side - Services Cards */}
+          <ServicesCards title={section === "design" ? "Creative & Brand Design" : "Digital Marketing & Growth"} services={services} section={section} />
+        </>
+      ) : (
+        <>
+          {/* Left Side - Services Cards */}
+          <ServicesCards title={title} services={services} section={section} />
+
+          {/* Right Side - Main Feature */}
+          <motion.div 
+            className="space-y-8 lg:pt-12"
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeInUp}>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 leading-tight">
+                Custom Websites and Web Applications
+              </h2>
+              <p className="text-gray-400 text-lg leading-relaxed mb-8 text-justify">
+                We create digital experiences that captivate your audience and drive business growth through innovative web solutions.
+              </p>
+            </motion.div>
+            <FeatureList features={features} />
+          </motion.div>
+        </>
+      )}
+    </motion.div>
+  ), []);
+
+  // Services Cards Container Component
+  const ServicesCards = useCallback(({ title, services, section }) => (
+    <motion.div 
+      className="space-y-6 rounded-3xl sm:p-8 bg-linear-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-sm border border-slate-700/50 shadow-[0px_-2px_12px] shadow-cyan-200/14"
+      variants={cardAnimation}
+    >
+      <div className="bg-linear-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-sm sm:border border-slate-700/50 rounded-3xl sm:p-8 p-4 shadow-2xl sm:m-4">
+        <motion.h3 
+          className="text-2xl font-bold mb-6 text-center sm:text-start"
+          variants={fadeInUp}
+        >
+          {title}
+        </motion.h3>
+
+        <div className="space-y-4">
+          {services.map((service, index) => (
+            <ServiceCard 
+              key={index}
+              service={service}
+              index={index}
+              section={section}
+            />
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  ), []);
 
   return (
     <div className="bg-[#101820] text-white sm:py-16 px-6 overflow-hidden">
@@ -226,341 +396,35 @@ export default function ServicesSection() {
         </motion.div>
 
         {/* Digital Development Section */}
-        <motion.div 
+        <ServicesContainer
+          title="Digital Development"
+          services={services}
+          features={features}
+          section="digital"
           ref={digitalRef}
-          className="grid lg:grid-cols-2 gap-12 items-start"
-          initial="hidden"
-          animate={digitalInView ? "visible" : "hidden"}
-          variants={staggerContainer}
-        >
-          {/* Left Side - Services Cards */}
-          <motion.div 
-            className="space-y-6 rounded-3xl sm:p-8 bg-linear-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-sm border border-slate-700/50 shadow-[0px_-2px_12px] shadow-cyan-200/14"
-            variants={cardAnimation}
-          >
-            <div className="bg-linear-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-sm sm:border border-slate-700/50 rounded-3xl sm:p-8 p-4 shadow-2xl sm:m-4">
-              <motion.h3 
-                className="text-2xl font-bold mb-6 text-center sm:text-start"
-                variants={fadeInUp}
-              >
-                Digital Development
-              </motion.h3>
-
-              <div className="space-y-4">
-                {services.map((service, index) => (
-                  <motion.div
-                    key={index}
-                    variants={cardAnimation}
-                  >
-                    <Link href={service.Link}>
-                      <div
-                        className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-4 flex items-center justify-between group hover:bg-slate-700/50 hover:border-cyan-400/50 transition-all duration-300 cursor-pointer overflow-hidden"
-                        onMouseMove={(e) => handleMouseMove(e, index, "digital")}
-                        onMouseLeave={handleMouseLeave}
-                      >
-                        {/* Mouse-following Glow Effect */}
-                        {hoveredIndex === index && hoveredSection === "digital" && (
-                          <div
-                            className="absolute w-64 h-64 -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-opacity duration-300"
-                            style={{
-                              left: `${mousePosition.x}px`,
-                              top: `${mousePosition.y}px`,
-                              background: "radial-gradient(circle, rgba(34, 211, 238, 0.3) 0%, rgba(34, 211, 238, 0.15) 30%, transparent 70%)",
-                              filter: "blur(40px)",
-                            }}
-                          />
-                        )}
-
-                        {/* Static Glow Effect Layers */}
-                        <div className="absolute inset-0 bg-linear-to-r from-cyan-400/0 via-cyan-400/5 to-cyan-400/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                        {/* Content */}
-                        <div className="relative flex items-center gap-4 flex-1">
-                          <div className="text-cyan-400 bg-slate-700/50 p-2 rounded-lg group-hover:bg-cyan-400/10 transition-colors duration-300">
-                            {service.icon}
-                          </div>
-                          <div className="flex-1">
-                            <h4 className="font-semibold text-white mb-1">
-                              {service.title}
-                            </h4>
-                            <p className="text-sm text-gray-400">
-                              {service.description}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="relative ml-4">
-                          <div className="bg-slate-700/50 p-2 rounded-full group-hover:bg-cyan-400/20 transition-all duration-300">
-                            <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right Side - Main Feature */}
-          <motion.div 
-            className="space-y-8 lg:pt-12"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp}>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 leading-tight">
-                Custom Websites and Web Applications
-              </h2>
-              <p className="text-gray-400 text-lg leading-relaxed mb-8 text-justify">
-                We create digital experiences that captivate your audience and drive business growth through innovative web solutions.
-              </p>
-            </motion.div>
-
-            {/* Feature List */}
-            <motion.div 
-              className="space-y-5"
-              variants={featureListAnimation}
-            >
-              {features.map((feature, index) => (
-                <motion.div 
-                  key={index} 
-                  className="flex items-start gap-4 group"
-                  variants={featureItemAnimation}
-                >
-                  <div className="mt-1 shrink-0">
-                    <ArrowRightCircle className="w-6 h-6 text-cyan-400 group-hover:text-emerald-400 transition-colors duration-300" />
-                  </div>
-                  <p className="text-gray-300 text-lg leading-relaxed">
-                    {feature}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </motion.div>
+          inView={digitalInView}
+        />
 
         {/* Creative & Brand Design Section */}
-        <motion.div 
+        <ServicesContainer
+          title="Designs that define your brand"
+          services={designservices}
+          features={designFeatures}
+          section="design"
           ref={designRef}
-          className="grid lg:grid-cols-2 gap-12 items-start"
-          initial="hidden"
-          animate={designInView ? "visible" : "hidden"}
-          variants={staggerContainer}
-        >
-          {/* Left Side - Main Feature */}
-          <motion.div 
-            className="space-y-8 lg:pt-12"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp}>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 leading-tight">
-                Designs that define your brand
-              </h2>
-              <p className="text-gray-400 text-lg leading-relaxed text-justify">
-                We craft visual identities that resonate with your target audience and create lasting impressions across all touchpoints.
-              </p>
-            </motion.div>
-
-            {/* Feature List */}
-            <motion.div 
-              className="space-y-5"
-              variants={featureListAnimation}
-            >
-              {designFeatures.map((feature, index) => (
-                <motion.div 
-                  key={index} 
-                  className="flex items-start gap-4 group"
-                  variants={featureItemAnimation}
-                >
-                  <div className="mt-1 shrink-0">
-                    <ArrowRightCircle className="w-6 h-6 text-cyan-400 group-hover:text-emerald-400 transition-colors duration-300" />
-                  </div>
-                  <p className="text-gray-300 text-lg leading-relaxed">
-                    {feature}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          {/* Right Side - Services Cards */}
-          <motion.div 
-            className="space-y-6 rounded-3xl sm:p-8 bg-linear-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-sm border border-slate-700/50 shadow-[0px_-2px_12px] shadow-cyan-200/14"
-            variants={cardAnimation}
-          >
-            <div className="bg-linear-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-sm sm:border border-slate-700/50 rounded-3xl sm:p-8 p-4 shadow-2xl sm:m-4">
-              <motion.h3 
-                className="text-2xl font-bold mb-6 text-center sm:text-start"
-                variants={fadeInUp}
-              >
-                Creative & Brand Design
-              </motion.h3>
-
-              <div className="space-y-4">
-                {designservices.map((designservice, index) => (
-                  <motion.div
-                    key={index}
-                    variants={cardAnimation}
-                  >
-                    <Link href={designservice.Link}>
-                      <div
-                        className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-4 flex items-center justify-between group hover:bg-slate-700/50 hover:border-cyan-400/50 transition-all duration-300 cursor-pointer overflow-hidden"
-                        onMouseMove={(e) => handleMouseMove(e, index, "design")}
-                        onMouseLeave={handleMouseLeave}
-                      >
-                        {/* Mouse-following Glow Effect */}
-                        {hoveredIndex === index && hoveredSection === "design" && (
-                          <div
-                            className="absolute w-64 h-64 -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-opacity duration-300"
-                            style={{
-                              left: `${mousePosition.x}px`,
-                              top: `${mousePosition.y}px`,
-                              background: "radial-gradient(circle, rgba(34, 211, 238, 0.3) 0%, rgba(34, 211, 238, 0.15) 30%, transparent 70%)",
-                              filter: "blur(40px)",
-                            }}
-                          />
-                        )}
-
-                        {/* Static Glow Effect Layers */}
-                        <div className="absolute inset-0 bg-linear-to-r from-cyan-400/0 via-cyan-400/5 to-cyan-400/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                        <div className="relative flex items-center gap-4 flex-1">
-                          <div className="text-cyan-400 bg-slate-700/50 p-2 rounded-lg group-hover:bg-cyan-400/10 transition-colors duration-300">
-                            {designservice.icon}
-                          </div>
-                          <div className="flex-1">
-                            <h4 className="font-semibold text-white mb-1">
-                              {designservice.title}
-                            </h4>
-                            <p className="text-sm text-gray-400">
-                              {designservice.description}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="relative ml-4">
-                          <div className="bg-slate-700/50 p-2 rounded-full group-hover:bg-cyan-400/20 transition-all duration-300">
-                            <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
+          inView={designInView}
+          reverse={true}
+        />
 
         {/* Digital Marketing & Growth Section */}
-        <motion.div 
+        <ServicesContainer
+          title="Digital Marketing & Growth"
+          services={digitalmarketingfeaturesservices}
+          features={digitalMarketingFeatures}
+          section="marketing"
           ref={marketingRef}
-          className="grid lg:grid-cols-2 gap-12 items-start"
-          initial="hidden"
-          animate={marketingInView ? "visible" : "hidden"}
-          variants={staggerContainer}
-        >
-          {/* Left Side - Services Cards */}
-          <motion.div 
-            className="space-y-6 rounded-3xl sm:p-8 bg-linear-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-sm border border-slate-700/50 shadow-[0px_-2px_12px] shadow-cyan-200/14"
-            variants={cardAnimation}
-          >
-            <div className="bg-linear-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-sm sm:border border-slate-700/50 rounded-3xl sm:p-8 p-4 shadow-2xl sm:m-4">
-              <motion.h3 
-                className="text-2xl font-bold mb-6 text-center sm:text-start"
-                variants={fadeInUp}
-              >
-                Digital Marketing & Growth
-              </motion.h3>
-
-              <div className="space-y-4">
-                {digitalmarketingfeaturesservices.map((service, index) => (
-                  <motion.div
-                    key={index}
-                    variants={cardAnimation}
-                  >
-                    <Link href={service.Link}>
-                      <div
-                        className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-4 flex items-center justify-between group hover:bg-slate-700/50 hover:border-cyan-400/50 transition-all duration-300 cursor-pointer overflow-hidden"
-                        onMouseMove={(e) => handleMouseMove(e, index, "marketing")}
-                        onMouseLeave={handleMouseLeave}
-                      >
-                        {/* Mouse-following Glow Effect */}
-                        {hoveredIndex === index && hoveredSection === "marketing" && (
-                          <div
-                            className="absolute w-64 h-64 -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-opacity duration-300"
-                            style={{
-                              left: `${mousePosition.x}px`,
-                              top: `${mousePosition.y}px`,
-                              background: "radial-gradient(circle, rgba(34, 211, 238, 0.3) 0%, rgba(34, 211, 238, 0.15) 30%, transparent 70%)",
-                              filter: "blur(40px)",
-                            }}
-                          />
-                        )}
-
-                        {/* Static Glow Effect Layers */}
-                        <div className="absolute inset-0 bg-linear-to-r from-cyan-400/0 via-cyan-400/5 to-cyan-400/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                        <div className="relative flex items-center gap-4 flex-1">
-                          <div className="text-cyan-400 bg-slate-700/50 p-2 rounded-lg group-hover:bg-cyan-400/10 transition-colors duration-300">
-                            {service.icon}
-                          </div>
-                          <div className="flex-1">
-                            <h4 className="font-semibold text-white mb-1">
-                              {service.title}
-                            </h4>
-                            <p className="text-sm text-gray-400">
-                              {service.description}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="relative ml-4">
-                          <div className="bg-slate-700/50 p-2 rounded-full group-hover:bg-cyan-400/20 transition-all duration-300">
-                            <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right Side - Main Feature */}
-          <motion.div 
-            className="space-y-8 lg:pt-12"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp}>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 leading-tight">
-                Digital Marketing & Growth
-              </h2>
-              <p className="text-gray-400 text-lg leading-relaxed mb-8 text-justify">
-                We implement data-driven marketing strategies that deliver measurable results and sustainable business growth.
-              </p>
-            </motion.div>
-
-            {/* Feature List */}
-            <motion.div 
-              className="space-y-5"
-              variants={featureListAnimation}
-            >
-              {digitalMarketingFeatures.map((feature, index) => (
-                <motion.div 
-                  key={index} 
-                  className="flex items-start gap-4 group"
-                  variants={featureItemAnimation}
-                >
-                  <div className="mt-1 shrink-0">
-                    <ArrowRightCircle className="w-6 h-6 text-cyan-400 group-hover:text-emerald-400 transition-colors duration-300" />
-                  </div>
-                  <p className="text-gray-300 text-lg leading-relaxed">
-                    {feature}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </motion.div>
+          inView={marketingInView}
+        />
 
         {/* CTA Section */}
         <motion.div 

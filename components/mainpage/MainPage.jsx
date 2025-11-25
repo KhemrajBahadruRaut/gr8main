@@ -1,22 +1,16 @@
+"use client";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function MainPage() {
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    Promise.resolve().then(() => setIsVisible(true));
-  }, []);
+  useEffect(() => setIsVisible(true), []);
 
   return (
     <div className="bg-[#101820] relative overflow-hidden pb-20">
       {/* Grid background pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
-
-      {/* Lighter gradient orbs */}
-      <div className="absolute top-20 left-10 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl animate-float"></div>
-      <div className="absolute bottom-20 right-10 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl animate-float-delayed"></div>
-
       <div className="relative z-10 flex flex-col items-center justify-center px-4 py-20">
         {/* Hero Text */}
         <div
@@ -24,12 +18,26 @@ export default function MainPage() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Building a{" "}
-            <span className="bg-linear-to-r from-[#D79442] to-[#EFC27E] bg-clip-text text-transparent text-3xl md:text-4xl lg:text-7xl animate-gradient">
-              Stronger
-            </span>
-            <br />
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight ">
+            <div>
+              Building a{" "}
+              <div className="inline-block h-[1.2em] overflow-hidden align-middle -mt-2 md:-mt-2 lg:-mt-6 ">
+                <div className="flex flex-col animate-word-rotate">
+                  <span className="bg-linear-to-r from-[#841617] to-[#E06666] bg-clip-text text-transparent text-3xl md:text-4xl lg:text-7xl">
+                    Smarter
+                  </span>
+                  <span className="bg-linear-to-r from-[#D79442] to-[#EFC27E] bg-clip-text text-transparent text-3xl md:text-4xl lg:text-7xl">
+                    Stronger
+                  </span>
+                  <span className="bg-linear-to-r from-[#0E8A4D] to-[#4FBF87] bg-clip-text text-transparent text-3xl md:text-4xl lg:text-7xl">
+                    Powerful
+                  </span>
+                  <span className="bg-linear-to-r from-[#841617] to-[#E06666] bg-clip-text text-transparent text-3xl md:text-4xl lg:text-7xl">
+                    Smarter
+                  </span>
+                </div>
+              </div>
+            </div>
             Digital Presence for Your Business.
           </h1>
           <p
@@ -40,15 +48,18 @@ export default function MainPage() {
           </p>
 
           <div className="flex flex-wrap gap-8 justify-center">
-            <button
+            <Link
               className="bg-linear-to-r from-[#B64546] to-[#F2D08A] hover:from-[#F2D08A] hover:to-[#B64546] hover:scale-105 hover:shadow-sm transition-all duration-300 ease-in-out text-white px-8 py-3 rounded-full font-medium shadow-lg hover:shadow-orange-600/50 animate-fade-in-up"
               style={{ animationDelay: "400ms" }}
+              href="#"
             >
-              <Link href="#">See our Works</Link>
-            </button>
-            <button
+              See our Works
+            </Link>
+
+            <Link
               className="relative inline-flex items-center justify-center px-10 py-3 font-medium rounded-full bg-transparent group transition-all duration-300 ease-out hover:scale-105 animate-fade-in-up"
               style={{ animationDelay: "500ms" }}
+              href="/contact"
             >
               {/* Gradient border */}
               <span className="absolute inset-0 rounded-full p-px bg-linear-to-r from-[#F2D08A] to-[#B64546] transition-all duration-300 ease-out">
@@ -56,9 +67,9 @@ export default function MainPage() {
               </span>
               {/* Text */}
               <span className="relative z-10 flex items-center gap-2 bg-linear-to-r from-[#F2D08A] to-[#B64546] bg-clip-text text-transparent transition-all duration-300 ease-out group-hover:text-white">
-                <Link href="/contact">Get started →</Link>
+                Get started →
               </span>
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -238,11 +249,32 @@ export default function MainPage() {
           background-size: 200% 200%;
           animation: gradient 4s ease infinite;
         }
+        @keyframes word-rotate {
+          0% {
+            transform: translateY(0);
+          }
+          16.66% {
+            transform: translateY(0);
+          }
+          33.33% {
+            transform: translateY(-25%);
+          }
+          50% {
+            transform: translateY(-25%);
+          }
+          66.66% {
+            transform: translateY(-50%);
+          }
+          83.33% {
+            transform: translateY(-50%);
+          }
+          100% {
+            transform: translateY(-75%);
+          }
+        }
 
-        /* Ensure proper text display */
-        .font-mono {
-          font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas,
-            "Liberation Mono", Menlo, monospace;
+        .animate-word-rotate {
+          animation: word-rotate 9s ease-in-out infinite;
         }
       `}</style>
     </div>
